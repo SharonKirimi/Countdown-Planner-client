@@ -1,52 +1,64 @@
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 
 import { signUp, signIn } from '../../api/auth'
 import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Background from '../Visuals/images/pencil_background.jpg'
 
-const SignUp = ({ msgAlert, setUser }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordConfirmation, setPasswordConfirmation] = useState('')
-  const [shouldNavigate, setShouldNavigate] = useState(false)
+class SignUp extends Component {
+  constructor (props) {
+    super(props)
 
-  const onSignUp = async (event) => {
-    event.preventDefault()
+    this.state = {
+      email: '',
+      password: '',
+      passwordConfirmation: ''
+    }
+  }
 
-    try {
-      await signUp(email, password, passwordConfirmation)
-      const res = await signIn(email, password)
-      setUser(res.data.user)
+handleChange = (event) =>
+  this.setState({
+    [event.target.name]: event.target.value
+  })
+
+onSignUp = (event) => {
+  event.preventDefault()
+
+  const { msgAlert, history, setUser } = this.props
+
+  signUp(this.state)
+    .then(() => signIn(this.state))
+    .then((res) => setUser(res.data.user))
+    .then(() =>
       msgAlert({
         heading: 'Sign Up Success',
         message: signUpSuccess,
         variant: 'success'
       })
-      setShouldNavigate(true)
-    } catch (error) {
-      setEmail('')
-      setPassword('')
-      setPasswordConfirmation('')
+    )
+    .then(() => history.push('/'))
+    .catch((error) => {
+      this.setState({ email: '', password: '', passwordConfirmation: '' })
       msgAlert({
         heading: 'Sign Up Failed with error: ' + error.message,
         message: signUpFailure,
         variant: 'danger'
       })
-    }
-  }
+    })
+}
 
-  if (shouldNavigate) {
-    return <Navigate to='/' />
-  }
+render () {
+  const { email, password, passwordConfirmation } = this.state
 
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <h3>Sign Up</h3>
-        <Form onSubmit={onSignUp}>
+        <img className='background-image' src={Background} />
+        <h3 className='tasks-text'>Sign Up</h3>
+        <Form onSubmit={this.onSignUp}>
           <Form.Group controlId='email'>
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -55,7 +67,7 @@ const SignUp = ({ msgAlert, setUser }) => {
               name='email'
               value={email}
               placeholder='Enter email'
-              onChange={event => setEmail(event.target.value)}
+              onChange={this.handleChange}
             />
           </Form.Group>
           <Form.Group controlId='password'>
@@ -66,7 +78,7 @@ const SignUp = ({ msgAlert, setUser }) => {
               value={password}
               type='password'
               placeholder='Password'
-              onChange={event => setPassword(event.target.value)}
+              onChange={this.handleChange}
             />
           </Form.Group>
           <Form.Group controlId='passwordConfirmation'>
@@ -77,14 +89,15 @@ const SignUp = ({ msgAlert, setUser }) => {
               value={passwordConfirmation}
               type='password'
               placeholder='Confirm Password'
-              onChange={event => setPasswordConfirmation(event.target.value)}
+              onChange={this.handleChange}
             />
           </Form.Group>
-          <Button className='mt-2' variant='primary' type='submit'>Submit</Button>
+          <Button className='mt-2' variant='warning' type='submit'>Submit</Button>
         </Form>
       </div>
     </div>
   )
 }
+}
 
-export default SignUp
+export default withRouter(SignUp)

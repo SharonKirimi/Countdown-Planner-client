@@ -1,6 +1,6 @@
 {
   "SharonKirimi": "https://github.com/SharonKirimi/Countdown-Planner-client.git",
-  "name": "Countdown Planner-client",
+  "name": "Countdown-Planner-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
