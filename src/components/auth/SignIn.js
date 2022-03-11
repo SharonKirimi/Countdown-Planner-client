@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Router } from 'react-router-dom'
 
 import { signIn } from '../../api/auth'
 import { signInSuccess, signInFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-
-import Background from '../Visuals/images/pencil_background.jpg'
 
 class SignIn extends Component {
   constructor (props) {
@@ -55,7 +53,6 @@ render () {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <img className='background-image' src={Background} />
         <h3 className='tasks-text'>Sign In</h3>
         <Form onSubmit={this.onSignIn}>
           <Form.Group controlId='email'>
@@ -88,4 +85,4 @@ render () {
 }
 }
 
-export default withRouter(SignIn)
+export default Router(SignIn)

@@ -1,6 +1,6 @@
 /* eslint-disable no-tabs */
 import React, { useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
@@ -9,6 +9,25 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+
+import { connect } from 'react-redux'
+import Modal from 'react-modal'
+import styled from 'styled-components'
+import Sidebar from './components/Sidebar/Sidebar'
+import Calendar from './components/Calendar/calendar'
+import Countdown from './components/Countdown/Countdown'
+import EventPopup from './components/Calendar/EventPopup/EventPopup'
+
+Modal.setAppElement('#root')
+
+const Wrapper = styled.div`
+    height: 100%;
+`
+
+const MainWrapper = styled.main`
+    min-height: 100%;
+    margin-left: 260px;
+`
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -34,7 +53,7 @@ const App = () => {
         />
       ))}
       <main className='container'>
-        <Routes>
+        <Switch>
           <Route
             path='/sign-up'
             element={<SignUp msgAlert={msgAlert} setUser={setUser} /> }
@@ -51,11 +70,26 @@ const App = () => {
             path='/change-password'
             element={<ChangePassword msgAlert={msgAlert} user={user} /> }
           />
-
-        </Routes>
+        </Switch>
+        <Wrapper>
+          <Sidebar />
+          <MainWrapper>
+            <Header />
+            <Calendar />
+            <Countdown />
+          </MainWrapper>
+          <Modal isOpen={popup.status}>
+            <EventPopup />
+          </Modal>
+        </Wrapper>
       </main>
     </>
   )
 }
 
-export default App
+const mapStateToProps = state => ({
+  events: state.events,
+  popup: state.popup
+})
+
+export default connect(mapStateToProps)(App)

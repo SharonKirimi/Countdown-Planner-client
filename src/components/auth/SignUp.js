@@ -6,7 +6,6 @@ import { signUpSuccess, signUpFailure } from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Background from '../Visuals/images/pencil_background.jpg'
 
 class SignUp extends Component {
   constructor (props) {
@@ -56,7 +55,6 @@ render () {
   return (
     <div className='row'>
       <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-        <img className='background-image' src={Background} />
         <h3 className='tasks-text'>Sign Up</h3>
         <Form onSubmit={this.onSignUp}>
           <Form.Group controlId='email'>

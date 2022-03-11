@@ -1,0 +1,14 @@
+.TimerCell {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    > .TimerCellValue {
+        font-size: 7rem;
+    }
+    
+    > .TimerCellLabel {
+        font-style: italic;
+    }
+}
