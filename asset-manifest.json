@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/countdown-planner-client/static/css/main.6c04e17a.chunk.css",
+    "main.js": "/countdown-planner-client/static/js/main.6c2aca3e.chunk.js",
+    "main.js.map": "/countdown-planner-client/static/js/main.6c2aca3e.chunk.js.map",
+    "runtime-main.js": "/countdown-planner-client/static/js/runtime-main.f52d3f54.js",
+    "runtime-main.js.map": "/countdown-planner-client/static/js/runtime-main.f52d3f54.js.map",
+    "static/css/2.ba0c5f23.chunk.css": "/countdown-planner-client/static/css/2.ba0c5f23.chunk.css",
+    "static/js/2.9ad9a9c1.chunk.js": "/countdown-planner-client/static/js/2.9ad9a9c1.chunk.js",
+    "static/js/2.9ad9a9c1.chunk.js.map": "/countdown-planner-client/static/js/2.9ad9a9c1.chunk.js.map",
+    "index.html": "/countdown-planner-client/index.html",
+    "static/css/2.ba0c5f23.chunk.css.map": "/countdown-planner-client/static/css/2.ba0c5f23.chunk.css.map",
+    "static/css/main.6c04e17a.chunk.css.map": "/countdown-planner-client/static/css/main.6c04e17a.chunk.css.map",
+    "static/js/2.9ad9a9c1.chunk.js.LICENSE.txt": "/countdown-planner-client/static/js/2.9ad9a9c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f52d3f54.js",
+    "static/css/2.ba0c5f23.chunk.css",
+    "static/js/2.9ad9a9c1.chunk.js",
+    "static/css/main.6c04e17a.chunk.css",
+    "static/js/main.6c2aca3e.chunk.js"
+  ]
+}
