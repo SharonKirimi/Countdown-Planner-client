@@ -8,10 +8,6 @@ import styled from 'styled-components'
 import { eventAdd, eventChange, eventRemove } from '../Calendar/Store/actions/event'
 import { popupOpen, popupClose } from '../Calendar/Store/actions/popup'
 
-import '@fullcalendar/core/main.css'
-import '@fullcalendar/daygrid/main.css'
-import '@fullcalendar/timegrid/main.css'
-
 const CalendarWrapper = styled.div`
   width: 90%;
   background: white;

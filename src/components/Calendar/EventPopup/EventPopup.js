@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { popupClose } from '../store/actions/popup'
-import { eventAdd, eventRemove } from '../store/actions/event'
+import { popupClose } from '../Store/actions/popup'
+import { eventAdd, eventRemove } from '../Store/actions/event'
 
 const PopupWrapper = styled.div`
   z-index: 100;

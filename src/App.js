@@ -30,7 +30,7 @@ const MainWrapper = styled.main`
 `
 
 const App = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({})
   const [msgAlerts, setMsgAlerts] = useState([])
 
   const clearUser = () => setUser(null)
@@ -78,7 +78,7 @@ const App = () => {
             <Calendar />
             <Countdown />
           </MainWrapper>
-          <Modal isOpen={popup.status}>
+          <Modal isOpen={EventPopup.status}>
             <EventPopup />
           </Modal>
         </Wrapper>

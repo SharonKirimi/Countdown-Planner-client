@@ -1,9 +1,9 @@
 import React from 'react'
-import { TimerCell } from 'components/TimerCell'
-import { TimerSeparator } from 'components/TimerSeparator'
-import { useTimer } from 'hooks'
+import { TimerCell } from '../TimerCell/TimerCell'
+import { TimerSeparator } from '../TimerSeparator/TimerSeparator'
+import { useTimer } from '../Hooks/useTimer'
 
-import style from './Timer.module.scss'
+import style from './Timer.scss'
 
 export const Timer = ({ futureDate }) => {
   const { weeks, days, hours, minutes, seconds, isTimeUp } = useTimer(futureDate)

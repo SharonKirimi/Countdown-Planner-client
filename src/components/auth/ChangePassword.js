@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Router } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+
 
 import { changePassword } from '../../api/auth'
 import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
@@ -84,4 +85,4 @@ render () {
 }
 }
 
-export default Router(ChangePassword)
+export default withRouter(ChangePassword)

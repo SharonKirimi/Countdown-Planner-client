@@ -1,29 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Header = () => {
-  const authenticatedOptions = (
-    <>
-      <Link to='/change-password' className='nav-link'>Change Password</Link>
-      <Link to='/sign-out' className='nav-link'>Sign Out</Link>
-    </>
-  )
+  // const authenticatedOptions = (
+  //   <>
+  //     <Link to='/change-password' className='nav-link'>Change Password</Link>
+  //     <Link to='/sign-out' className='nav-link'>Sign Out</Link>
+  //   </>
+  // )
 
-  const unauthenticatedOptions = (
-    <>
-      <Link to='/sign-up' className='nav-link'>Sign Up</Link>
-      <Link to='/sign-in' className='nav-link'>Sign In</Link>
-    </>
-  )
+  // const unauthenticatedOptions = (
+  //   <>
+  //     <Link to='/sign-up' className='nav-link'>Sign Up</Link>
+  //     <Link to='/sign-in' className='nav-link'>Sign In</Link>
+  //   </>
+  // )
 
-  const alwaysOptions = (
-    <>
-      <Link to='/' className='nav-link'>Home</Link>
-    </>
-  )
+  // const alwaysOptions = (
+  //   <>
+  //     <Link to='/' className='nav-link'>Home</Link>
+  //   </>
+  // )
 
-  const styledHeader = styled.header`
+  const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,7 +102,7 @@ const Header = () => {
   color: #B4CFB0;
 `
   return (
-    <styledHeader>
+    <StyledHeader>
       <HeaderSearchLabel>
         <SearchImgWrapper>
           <img src="images/icon_search.svg" className="header__search-img" alt="search-icon" />
@@ -116,14 +116,13 @@ const Header = () => {
 
       <HeaderRightWrapper>
 
-
         <HeaderRightDivider />
 
         <UserWrapper>
           <UserName>Sharon</UserName>
         </UserWrapper>
       </HeaderRightWrapper>
-    </styledHeader>
+    </StyledHeader>
   )
 }
 

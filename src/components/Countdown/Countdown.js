@@ -1,7 +1,7 @@
 import { useState, React } from 'react'
 import { add } from 'date-fns'
 
-import { Timer } from 'components/Timer'
+import { Timer } from './Timer/Timer'
 
 import style from './Countdown.scss'
 
