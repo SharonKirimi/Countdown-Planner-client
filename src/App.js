@@ -10,7 +10,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import styled from 'styled-components'
 import Sidebar from './components/Sidebar/Sidebar'
@@ -87,9 +87,10 @@ const App = () => {
   )
 }
 
-const mapStateToProps = state => ({
-  events: state.events,
-  popup: state.popup
-})
+// const mapStateToProps = state => ({
+//   events: state.events,
+//   popup: state.popup
+// })
 
-export default connect(mapStateToProps)(App)
+// export default connect(mapStateToProps)(App)
+export default App

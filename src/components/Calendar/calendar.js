@@ -3,10 +3,10 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction' // needed for dayClick
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { eventAdd, eventChange, eventRemove } from '../Calendar/Store/actions/event'
-import { popupOpen, popupClose } from '../Calendar/Store/actions/popup'
+// import { eventAdd, eventChange, eventRemove } from '../Calendar/Store/actions/event'
+// import { popupOpen, popupClose } from '../Calendar/Store/actions/popup'
 
 const CalendarWrapper = styled.div`
   width: 90%;
@@ -110,17 +110,18 @@ class Calendar extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  eventAdd: event => dispatch(eventAdd(event)),
-  eventRemove: event => dispatch(eventRemove(event)),
-  eventChange: event => dispatch(eventChange(event)),
-  popupOpen: modalParams => dispatch(popupOpen(modalParams)),
-  popupClose: () => dispatch(popupClose(false))
-})
+// const mapDispatchToProps = dispatch => ({
+//   eventAdd: event => dispatch(eventAdd(event)),
+//   eventRemove: event => dispatch(eventRemove(event)),
+//   eventChange: event => dispatch(eventChange(event)),
+//   popupOpen: modalParams => dispatch(popupOpen(modalParams)),
+//   popupClose: () => dispatch(popupClose(false))
+// })
 
-const mapStateToProps = state => ({
-  popup: state.popup,
-  events: state.events
-})
+// const mapStateToProps = state => ({
+//   popup: state.popup,
+//   events: state.events
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar)
+// export default connect(mapStateToProps, mapDispatchToProps)(Calendar)
+export default Calendar
