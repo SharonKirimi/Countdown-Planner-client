@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-
 import { changePassword } from '../../api/auth'
 import { changePasswordSuccess, changePasswordFailure } from '../AutoDismissAlert/messages'
 
