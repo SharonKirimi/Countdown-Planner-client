@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Countdown-Planner-client/static/css/main.6c04e17a.chunk.css",
-    "main.js": "/Countdown-Planner-client/static/js/main.f217c9d8.chunk.js",
-    "main.js.map": "/Countdown-Planner-client/static/js/main.f217c9d8.chunk.js.map",
+    "main.js": "/Countdown-Planner-client/static/js/main.3651a924.chunk.js",
+    "main.js.map": "/Countdown-Planner-client/static/js/main.3651a924.chunk.js.map",
     "runtime-main.js": "/Countdown-Planner-client/static/js/runtime-main.cf57db5b.js",
     "runtime-main.js.map": "/Countdown-Planner-client/static/js/runtime-main.cf57db5b.js.map",
     "static/css/2.ba0c5f23.chunk.css": "/Countdown-Planner-client/static/css/2.ba0c5f23.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.ba0c5f23.chunk.css",
     "static/js/2.fd5a8d11.chunk.js",
     "static/css/main.6c04e17a.chunk.css",
-    "static/js/main.f217c9d8.chunk.js"
+    "static/js/main.3651a924.chunk.js"
   ]
 }
