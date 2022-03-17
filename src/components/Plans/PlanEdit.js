@@ -6,7 +6,8 @@ import { showPlan, updatePlan } from '../../api/plans'
 
 const PlanEdit = ({ user, msgAlert }) => {
   const [title, setTitle] = useState('')
-  const [director, setDirector] = useState('')
+  const [description, setDescription] = useState('')
+  const [date, setDate] = useState('')
   const [updated, setUpdated] = useState(false)
   const { id } = useParams()
 
@@ -23,8 +24,9 @@ const PlanEdit = ({ user, msgAlert }) => {
     const fetchData = async () => {
       try {
         const res = await showPlan(id, user)
-        setTitle(res.data.plan.title)
-        setDirector(res.data.plan.director)
+        setTitle(res.data.task.title)
+        setDescription(res.data.task.description)
+        setDate(res.data.task.date)
       } catch (error) {
         msgAlert({
           heading: 'Failed to load plan',
@@ -40,7 +42,7 @@ const PlanEdit = ({ user, msgAlert }) => {
     event.preventDefault()
 
     try {
-      await updatePlan(id, title, director, user)
+      await updatePlan(id, title, description, date, user)
       setUpdated(true)
     } catch (error) {
       msgAlert({
@@ -63,9 +65,11 @@ const PlanEdit = ({ user, msgAlert }) => {
         <PlanForm
           handleSubmit={handleSubmit}
           title={title}
-          director={director}
+          description={description}
+          date={date}
           setTitle={setTitle}
-          setDirector={setDirector}
+          setDescription={setDescription}
+          setDate={setDate}
         />
       </div>
     </div>

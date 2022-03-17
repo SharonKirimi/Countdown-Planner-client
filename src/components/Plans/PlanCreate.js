@@ -7,14 +7,15 @@ import { createPlan } from '../../api/plans'
 
 const PlanCreate = ({ user, msgAlert }) => {
   const [title, setTitle] = useState('')
-  const [director, setDirector] = useState('')
+  const [description, setDescription] = useState('')
+  const [date, setDate] = useState('')
   const [createdId, setCreatedId] = useState(null)
 
   const handleSubmit = async event => {
     event.preventDefault()
 
     try {
-      const res = await createPlan(title, director, user)
+      const res = await createPlan(title, description, new Date(date), user)
       setCreatedId(res.data.plan._id)
 
       msgAlert({
@@ -45,9 +46,11 @@ const PlanCreate = ({ user, msgAlert }) => {
         <PlanForm
           handleSubmit={handleSubmit}
           title={title}
-          director={director}
+          description={description}
+          date={date}
           setTitle={setTitle}
-          setDirector={ setDirector }
+          setDescription={setDescription}
+          setDate={setDate}
         />
       </div>
     </div>

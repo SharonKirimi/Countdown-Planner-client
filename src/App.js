@@ -1,6 +1,6 @@
 /* eslint-disable no-tabs */
 import React, { useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
@@ -10,27 +10,14 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
-// import { connect } from 'react-redux'
-import Modal from 'react-modal'
-import styled from 'styled-components'
-import Sidebar from './components/Sidebar/Sidebar'
-import Calendar from './components/Calendar/calendar'
-import Countdown from './components/Countdown/Countdown'
-import EventPopup from './components/Calendar/EventPopup/EventPopup'
-
-Modal.setAppElement('#root')
-
-const Wrapper = styled.div`
-    height: 100%;
-`
-
-const MainWrapper = styled.main`
-    min-height: 100%;
-    margin-left: 260px;
-`
+import Home from './components/Plans/Home'
+import Plan from './components/Plans/Plan'
+import PlanCreate from './components/Plans/PlanCreate'
+import PlanEdit from './components/Plans/PlanEdit'
+import Plans from './components/Plans/Plans'
 
 const App = () => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
 
   const clearUser = () => setUser(null)
@@ -38,6 +25,10 @@ const App = () => {
   const msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
     setMsgAlerts(msgAlerts => ([...msgAlerts, { heading, message, variant, id }]))
+  }
+
+  const deleteAlert = id => {
+    setMsgAlerts(msgAlerts => msgAlerts.filter(msg => msg.id !== id))
   }
 
   return (
@@ -50,10 +41,11 @@ const App = () => {
           variant={msgAlert.variant}
           message={msgAlert.message}
           id={msgAlert.id}
+          deleteAlert={deleteAlert}
         />
       ))}
       <main className='container'>
-        <Switch>
+        <Routes>
           <Route
             path='/sign-up'
             element={<SignUp msgAlert={msgAlert} setUser={setUser} /> }
@@ -70,27 +62,17 @@ const App = () => {
             path='/change-password'
             element={<ChangePassword msgAlert={msgAlert} user={user} /> }
           />
-        </Switch>
-        <Wrapper>
-          <Sidebar />
-          <MainWrapper>
-            <Header />
-            <Calendar />
-            <Countdown />
-          </MainWrapper>
-          <Modal isOpen={EventPopup.status}>
-            <EventPopup />
-          </Modal>
-        </Wrapper>
+
+          <Route path='/'
+            element={<Home />} />
+          <Route path='/plans' element={<Plans msgAlert={msgAlert} user={user} />} />
+          <Route path='/plans/:id' element={<Plan msgAlert={msgAlert} user={user} />} />
+          <Route path='/plans/create' element={<PlanCreate msgAlert={msgAlert} user={user} />} />
+          <Route path='/plans/:id/edit' element={<PlanEdit msgAlert={msgAlert} user={user} />} />
+        </Routes>
       </main>
     </>
   )
 }
 
-// const mapStateToProps = state => ({
-//   events: state.events,
-//   popup: state.popup
-// })
-
-// export default connect(mapStateToProps)(App)
 export default App

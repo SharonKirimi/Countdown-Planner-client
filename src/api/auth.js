@@ -1,55 +1,44 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const signUp = (credentials) => {
-  return axios({
-    method: 'POST',
-    url: apiUrl + '/sign-up/',
-    data: {
-      credentials: {
-        email: credentials.email,
-        password: credentials.password,
-        password_confirmation: credentials.passwordConfirmation
-      }
+export const signUp = (email, password, passwordConfirmation) => {
+  return axios.post(apiUrl + '/sign-up/', {
+    credentials: {
+      email,
+      password,
+      password_confirmation: passwordConfirmation
     }
-  })
+  }
+  )
 }
 
-export const signIn = (credentials) => {
-  return axios({
-    url: apiUrl + '/sign-in/',
-    method: 'POST',
-    data: {
-      credentials: {
-        email: credentials.email,
-        password: credentials.password
-      }
+export const signIn = (email, password) => {
+  return axios.post(apiUrl + '/sign-in/', {
+    credentials: {
+      email,
+      password
     }
-  })
+  }
+  )
 }
 
 export const signOut = (user) => {
-  return axios({
-    url: apiUrl + '/sign-out/',
-    method: 'DELETE',
+  return axios.delete(apiUrl + '/sign-out/', {
     headers: {
       Authorization: `Bearer ${user.token}`
     }
   })
 }
 
-export const changePassword = (passwords, user) => {
-  return axios({
-    url: apiUrl + '/change-password/',
-    method: 'PATCH',
+export const changePassword = (oldPassword, newPassword, user) => {
+  return axios.patch(apiUrl + '/change-password/', {
+    passwords: {
+      old: oldPassword,
+      new: newPassword
+    }
+  }, {
     headers: {
       Authorization: `Bearer ${user.token}`
-    },
-    data: {
-      passwords: {
-        old: passwords.oldPassword,
-        new: passwords.newPassword
-      }
     }
   })
 }

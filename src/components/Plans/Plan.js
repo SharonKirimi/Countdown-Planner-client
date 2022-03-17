@@ -63,7 +63,7 @@ const Plan = ({ user, msgAlert }) => {
       <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
           <h3>{plan.title}</h3>
-          <p>Director: {plan.director}</p>
+          <p>Title: {plan.title}</p>
           <Button variant='danger' onClick={handleDeleteClick}>Delete Plan</Button>
           <Link to={`/plans/${id}/edit`}>
             <Button variant='primary' type='submit'>Update Plan</Button>
