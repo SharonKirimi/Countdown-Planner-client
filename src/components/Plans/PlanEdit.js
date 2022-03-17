@@ -24,9 +24,9 @@ const PlanEdit = ({ user, msgAlert }) => {
     const fetchData = async () => {
       try {
         const res = await showPlan(id, user)
-        setTitle(res.data.task.title)
-        setDescription(res.data.task.description)
-        setDate(res.data.task.date)
+        setTitle(res.data.plan.title)
+        setDescription(res.data.plan.description)
+        setDate(res.data.plan.date)
       } catch (error) {
         msgAlert({
           heading: 'Failed to load plan',
