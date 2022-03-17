@@ -7,7 +7,7 @@ import { showPlan, updatePlan } from '../../api/plans'
 const PlanEdit = ({ user, msgAlert }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [date, setDate] = useState('')
+  const [date, setDate] = useState(new Date())
   const [updated, setUpdated] = useState(false)
   const { id } = useParams()
 
@@ -26,7 +26,7 @@ const PlanEdit = ({ user, msgAlert }) => {
         const res = await showPlan(id, user)
         setTitle(res.data.plan.title)
         setDescription(res.data.plan.description)
-        setDate(res.data.plan.date)
+        setDate(new Date(res.data.plan.date))
       } catch (error) {
         msgAlert({
           heading: 'Failed to load plan',
